@@ -34,6 +34,11 @@ namespace x32lib
 
 	} */
 
+    public enum DeviceType
+    {
+        X32, XAir
+    }
+
 	public class x32server
 	{
 
@@ -43,9 +48,26 @@ namespace x32lib
 
 		private static Timer renewTimer;
 
-		public x32server(string ip, int port=10023)
+		public x32server(string ip, DeviceType t = DeviceType.X32)
 		{
-			Setx32Address (ip, port);
+            int port;
+
+            switch (t)
+            {
+                case DeviceType.X32:
+                    port = 10023;
+                    break;
+
+                case DeviceType.XAir:
+                    port = 10024;
+                    break;
+
+                default:
+                    port = 10023;
+                    break;
+            }
+
+            Setx32Address (ip, port);
 		}
 
 		public void Setx32Address(string ip, int port=10023)
@@ -485,7 +507,7 @@ namespace x32lib
 		public static void Main()
 		{
 			Console.WriteLine ("test");
-			x32server server = new x32server("192.168.0.20",10023);
+			x32server server = new x32server("192.168.0.20", DeviceType.X32);
 			//server.Setx32Address("192.168.0.20",10023);
 			//Console.WriteLine ("Server address set.\n");
 
