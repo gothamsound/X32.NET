@@ -50,7 +50,7 @@ namespace x32lib
 
 		public x32server(string ip, DeviceType t = DeviceType.X32)
 		{
-            int port;
+            int port = 10023;
 
             switch (t)
             {
@@ -63,7 +63,6 @@ namespace x32lib
                     break;
 
                 default:
-                    port = 10023;
                     break;
             }
 
@@ -204,27 +203,6 @@ namespace x32lib
 		}
 
 		private List<Subscription> Subscriptions = new List<Subscription>();
-
-		/*   This is now depreciated
-		 * 
-		public void AddSubscription(string sub)
-		{
-			subscriptions.Add (PadString(sub)); // Ensure proper byte padding
-		}
-
-		public void GetSubscriptions(bool showHex = false)
-		{
-			Console.WriteLine ("Subscriptions:\n");
-			foreach (string s in subscriptions) 
-			{
-				Console.WriteLine (s);
-				if (showHex == true)
-					Console.WriteLine (hexDump (s));
-			}
-				Console.WriteLine ();
-		}
-
-		*/
 
 		public void ClearSubscriptions()
 		{
@@ -429,15 +407,15 @@ namespace x32lib
 
 		}
 
-		public void Send(string msg,  object val)
+		public void Send(string address,  object val)
 		{
 			if (x32Address == null)
 			{
-				Console.WriteLine("Haven't set the x32 Address yet!");
+				throw new Exception("Haven't set the x32 Address yet!");
 				return;
 			}
 
-			byte[] OSCaddress = Encoding.ASCII.GetBytes(PadString(msg));
+			byte[] OSCaddress = Encoding.ASCII.GetBytes(PadString(address));
 			byte[] OSCvalue = EncodeValue(val);
 
 			byte[] OSCmessage = CombineBytes (OSCaddress, OSCvalue);
@@ -506,12 +484,18 @@ namespace x32lib
 
 		public static void Main()
 		{
-			Console.WriteLine ("test");
-			x32server server = new x32server("192.168.0.20", DeviceType.X32);
-			//server.Setx32Address("192.168.0.20",10023);
-			//Console.WriteLine ("Server address set.\n");
+            /* When initializing an x32server, you can choose to specify 
+             * a DeviceType as X32 or XAir. The X32 listens to OSC commands
+             * on port 10023 whereas the XAir listens on 10024. This enum
+             * is set to automate that distinction in simple language.
+             * 
+             * If no DeviceType is set, the server defaults to X32 (port 10023). */
 
-			float faderLevel = 1f;
+            x32server server = new x32server("10.0.0.14", DeviceType.X32);
+
+            // Moves faders 9-16 up and down repeatedly
+            /*
+            float faderLevel = 1f;
 
 			for (int times = 0; times < 30; times++) {
 				server.Send ("/ch/09/mix/fader", faderLevel);
@@ -528,30 +512,25 @@ namespace x32lib
 				else
 					faderLevel = 1f;
 
-				System.Threading.Thread.Sleep (100);
+				System.Threading.Thread.Sleep (100); // Sleep for a time so as to not overload the X32 with requests, and to allow the faders to physically travel
 			}
 
-			
+            */
 
-			//server.AddSubscription ("asdf");
+            // Zeroes out all track sends for a particular mix
+
+            int mixTrack = 0;
+            string mix = mixTrack.ToString("00");
+            string addressBuffer = "";
+
+            for (int channel = 0; channel < 32; channel++)
+            {
+                addressBuffer = String.Format("/ch/{0}/mix/{1}/level", channel.ToString("00"), mix);
+                server.Send(addressBuffer, 0f);
+                System.Threading.Thread.Sleep(1);
+            }
+
 			Console.ReadLine();
-			//Console.WriteLine ("Done.");
-			//Console.ReadLine();
-
-			//server.Setx32Address("192.168.12.69", 10024);  //Alternate port for X-Air
-
-			//server.Send("/ch/01/config/color", 4);
-			//server.SetTrackName(1, "test");
-			//server.GetTrackMeter (1);
-
-			//server.AddSubscription ("/ch/01/mix/01/fader");
-			//server.GetSubscriptions (true);
-
-			//Console.WriteLine(server.x32Address);
-
-			//Console.WriteLine(server.LocalAddress);
-			//server.SetLocalPort(12345);
-			//Console.WriteLine(server.LocalAddress);
 
 		}    
 	}
