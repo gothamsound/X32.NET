@@ -3,3 +3,8 @@ C:\Users\Server\Documents\X32.NET\x32lib\bin\Debug\x32lib.exe
 C:\Users\Server\Documents\X32.NET\x32lib\bin\Debug\x32lib.pdb
 C:\Users\Server\Documents\X32.NET\x32lib\obj\x86\Debug\x32lib.csprojResolveAssemblyReference.cache
 C:\Users\Server\Documents\X32.NET\x32lib\obj\x86\Debug\x32lib.pdb
+C:\Users\willc\Desktop\X32.NET\x32lib\obj\x86\Debug\x32lib.exe
+C:\Users\willc\Desktop\X32.NET\x32lib\obj\x86\Debug\x32lib.pdb
+C:\Users\willc\Desktop\X32.NET\x32lib\bin\Debug\x32lib.exe
+C:\Users\willc\Desktop\X32.NET\x32lib\bin\Debug\x32lib.pdb
+C:\Users\willc\Desktop\X32.NET\x32lib\obj\x86\Debug\x32lib.csprojResolveAssemblyReference.cache

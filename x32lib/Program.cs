@@ -491,7 +491,7 @@ namespace x32lib
              * 
              * If no DeviceType is set, the server defaults to X32 (port 10023). */
 
-            x32server server = new x32server("10.0.0.14", DeviceType.X32);
+            x32server server = new x32server("192.168.2.109", DeviceType.X32);
 
             // Moves faders 9-16 up and down repeatedly
             /*
@@ -517,20 +517,23 @@ namespace x32lib
 
             */
 
-            // Zeroes out all track sends for a particular mix
+            // Zeroes out all track sends for a particular set of mixes
 
-            int mixTrack = 0;
-            string mix = mixTrack.ToString("00");
             string addressBuffer = "";
+            string mix = "";
 
-            for (int channel = 0; channel < 32; channel++)
+            for (int mixTrack = 1; mixTrack < 12; mixTrack++)
             {
-                addressBuffer = String.Format("/ch/{0}/mix/{1}/level", channel.ToString("00"), mix);
-                server.Send(addressBuffer, 0f);
-                System.Threading.Thread.Sleep(1);
-            }
+                mix = mixTrack.ToString("00");
 
-			Console.ReadLine();
+                for (int channel = 1; channel < 33; channel++)
+                {
+                    addressBuffer = String.Format("/ch/{0}/mix/{1}/level", channel.ToString("00"), mix);
+                    server.Send(addressBuffer, .75f);
+                    System.Threading.Thread.Sleep(1);
+                }
+            }
+			//Console.ReadLine();
 
 		}    
 	}
