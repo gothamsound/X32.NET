@@ -8,3 +8,9 @@ C:\Users\willc\Desktop\X32.NET\x32lib\obj\x86\Debug\x32lib.pdb
 C:\Users\willc\Desktop\X32.NET\x32lib\bin\Debug\x32lib.exe
 C:\Users\willc\Desktop\X32.NET\x32lib\bin\Debug\x32lib.pdb
 C:\Users\willc\Desktop\X32.NET\x32lib\obj\x86\Debug\x32lib.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\X32.NET\x32lib\bin\Debug\x32lib.exe
+C:\Users\User\Documents\GitHub\X32.NET\x32lib\bin\Debug\x32lib.pdb
+C:\Users\User\Documents\GitHub\X32.NET\x32lib\obj\x86\Debug\x32lib.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\X32.NET\x32lib\obj\x86\Debug\x32lib.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\X32.NET\x32lib\obj\x86\Debug\x32lib.exe
+C:\Users\User\Documents\GitHub\X32.NET\x32lib\obj\x86\Debug\x32lib.pdb
