@@ -35,7 +35,6 @@ namespace X32Lib
                     port = 10023;
                     break;
             }
-
             SetRemoteEndPoint(ip, port);
 
             for (int i = 0; i < Channels.Length; i++)
