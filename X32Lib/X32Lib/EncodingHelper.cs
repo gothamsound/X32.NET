@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace x32lib
+namespace X32Lib
 {
     public static class EncodingHelper
     {

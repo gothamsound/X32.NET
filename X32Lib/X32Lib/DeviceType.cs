@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace x32lib
+namespace X32Lib
 {
-    public enum DataType
+    public enum DeviceType
     {
-        Float = 0,
-        Int = 1,
-        String = 2,
-        Bool = 3
+        X32,
+        XAir
     }
-
 }

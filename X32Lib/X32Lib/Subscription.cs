@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace x32lib
+namespace X32Lib
 {
     public class Subscription
     {
@@ -13,11 +13,11 @@ namespace x32lib
 
         public System.Timers.Timer renewTimer;
 
-        private x32server server;
+        private X32Server server;
 
         private static int secTillResub = 3;
 
-        public Subscription(string address, x32server s)
+        public Subscription(string address, X32Server s)
         {
             server = s;
             OSCaddress = EncodingHelper.PadString(address);

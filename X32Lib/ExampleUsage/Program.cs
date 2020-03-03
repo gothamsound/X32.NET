@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Timers;
+using X32Lib;
 
-namespace x32lib
+namespace ExampleUsage
 {
     public static class Programm
     {
@@ -20,7 +21,7 @@ namespace x32lib
              * 
              * If no DeviceType is set, the server defaults to X32 (port 10023). */
 
-            x32server server = new x32server("192.168.2.109", DeviceType.X32);
+            X32Server server = new X32Server("192.168.2.109", DeviceType.X32);
 
             // Zeroes out all track sends for a particular set of mixes
 
